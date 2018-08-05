@@ -118,7 +118,7 @@ namespace Hacker
 			}
 			// cout << "\t currentNode is " << currentNode->NodeTag.head;
 			for (auto& atributeName : currentNode->NodeTag.body)
-				if (atributeName.name.find(elements[1]) != string::npos) {
+				if (atributeName.name == elements[1]) {
 					query = atributeName.value;
 					break;
 				}
@@ -196,12 +196,14 @@ int main() {
     }
 
     // process queries
+    vector<string> output;
     for (auto i = 0; i < Q; i++)
     {
-        string line;
         getline(cin, line);
-        cout << tree.extractQuery(line) << endl;
+        output.push_back(tree.extractQuery(line));
     }
+    for (size_t i = 0; i < output.size(); i++)
+    	cout << output[i] << endl;
     // data.close();
     return 0;
 }
